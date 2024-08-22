@@ -1,111 +1,1664 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>在线聊天室</title>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // 初始时隐藏聊天室内容
-      $('#chat-container').hide();
 
-      // 显示密码输入提示
-      $('#enter-chat').click(function() {
-        checkPassword();
-      });
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta charset="UTF-8">
+	<title>爱兑网 - 电子货币自动兑换 -BTC ETH USDT PerfectMoney PM ADVcash Payeer 支付宝 微信 充值 提现</title>
 
-      // 初始加载聊天消息
-      loadChat();
+	<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='stylesheet' id='open-sans-css' href='https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C700italic%2C400%2C300%2C600%2C700&#038;subset=latin%2Ccyrillic-ext%2Ccyrillic&#038;ver=2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='theme style-css' href='https://ichange.one/wp-content/themes/ichange/style.css?ver=1720775830' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://ichange.one/wp-includes/css/dist/block-library/style.min.css?ver=6.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='classic-theme-styles-css' href='https://ichange.one/wp-includes/css/classic-themes.min.css?ver=1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery/script.min.js?ver=3.6.0' id='jquery-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-ui/script.min.js?ver=1.13.1' id='jquery-ui-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-forms/script.min.js?ver=3.51' id='jquery-forms-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-cook/script.min.js?ver=0.1' id='jquery-cookie-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-clipboard/script.min.js?ver=2.0.10' id='jquery-clipboard-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-window/script.min.js?ver=0.9' id='jquery-window-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-changeinput/script.min.js?ver=0.1' id='jquery-changeinput-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-select/script.min.js?ver=0.7' id='jquery select-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-table/script.min.js?ver=0.4' id='jquery-table-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-checkbox/script.min.js?ver=0.2' id='jquery-checkbox-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/themes/ichange/js/site.js?ver=2.5' id='jquery site js-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/wp-content/plugins/premiumbox/premium/js/jquery-timer/script.min.js?ver=0.3' id='jquery js timer-js'></script>
+<script type="931fa7366553a025676f639d-text/javascript" src='https://ichange.one/premium_script.js?lang=zh&#038;ver=1720804630' id='jquery-premium-js-js'></script>
+<link rel='canonical' href='https://ichange.one/zh/' />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ichange.one/zh/" />
+<meta property="og:site_name" content="爱兑网 - 电子货币自动兑换 -BTC ETH EOS BCH XRP ETC LTC BCH PerfectMoney PM ADVcash Payeer" />	
+		<meta property="og:title" content="爱兑网 - 电子货币自动兑换 -  比特币，以太坊，莱特币，完美货币自动兑换服务 - BTC ETH LTC BCH PerfectMoney ADVcash Payeer" />
+		
+	<meta property="og:description" content="爱兑网-电子货币自动兑换 – 让您的数字货币兑换更加便捷安全！
+我们提供目前主流的数字货币比特币BTC,以太坊ETH,莱特币LTC,比特币现金BCH,柚子EOS,完美货币Perfectmoney,AdvCash,Payeer,支付宝,微信支付等的双向自动或半自动兑换服务。" />
+		<meta name="keywords" content="比特币 以太坊 莱特币 完美货币 自动兑换服务  BTC BitCoin ETHXRP ETC LTC PerfectMoney PM ADVcash Payeer 支付宝 微信 充值 提现" />
+<meta name="description" content="爱兑网-电子货币自动兑换 – 让您的数字货币兑换更加便捷安全！
+我们提供目前主流的数字货币比特币BTC,以太坊ETH,莱特币LTC,完美货币Perfectmoney,AdvCash,Payeer等的双向自动或半自动兑换服务。" />	
+	<link rel="shortcut icon" href="https://ichange.one/wp-content/uploads/FavIcon.png" type="image/png" />
+<link rel="icon" href="https://ichange.one/wp-content/uploads/FavIcon.png" type="image/png" />
+			<link rel="icon" href="https://ichange.one/wp-content/uploads/cropped-favicon-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://ichange.one/wp-content/uploads/cropped-favicon-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://ichange.one/wp-content/uploads/cropped-favicon-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://ichange.one/wp-content/uploads/cropped-favicon-1-270x270.png" />
 
-      // 设置自动刷新时间间隔（例如，每20秒）
-      setInterval(loadChat, 20000);
-
-      // 发送消息
-      $('#send_message').click(function() {
-        var username = $('#username').val();
-        var message = $('#message').val();
-
-        if (username && message) {
-          $.ajax({
-            url: 'send_message.php',
-            method: 'POST',
-            data: { username: username, message: message },
-            success: function(response) {
-              // 发送消息后重新加载聊天消息并清空输入框
-              loadChat();
-              $('#message').val('');
-              scrollToBottom();
-            },
-            error: function(xhr, status, error) {
-              console.error("AJAX error sending message: " + status + ", " + error);
-            }
-          });
-        }
-      });
-
-      // 滚动到聊天框底部
-      function scrollToBottom() {
-        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
-      }
-
-      // 加载聊天室内容
-      function loadChat() {
-        $.ajax({
-          url: 'get_messages.php',
-          method: 'GET',
-          success: function(response) {
-            $('#chatbox').html(response);
-            scrollToBottom();
-          },
-          error: function(xhr, status, error) {
-            console.error("AJAX error: " + status + ", " + error);
-          }
-        });
-      }
-
-      // 检查密码
-      function checkPassword() {
-        var password = prompt("请输入密码以进入聊天室：");
-        if (password === "910605") {
-          // 密码正确，显示聊天室内容
-          $('#password-screen').hide();
-          $('#chat-container').show();
-          loadChat(); // 加载聊天室内容
-        } else {
-          alert("密码错误，请重试！");
-        }
-      }
-
-      // 使用MutationObserver来监听DOM变化
-      const observer = new MutationObserver(mutations => {
-        if (mutations.some(mutation => mutation.type === 'childList' && mutation.target.id === 'chatbox')) {
-          scrollToBottom();
-        }
-      });
-
-      // 配置观察器选项
-      const config = { childList: true, subtree: true };
-
-      // 传入目标节点和观察选项
-      observer.observe(document.getElementById('chatbox'), config);
-    });
-  </script>
+<script src="//code.tidio.co/uwzo2wgoebl58enct61fzm9mxmgjqqlk.js" async type="931fa7366553a025676f639d-text/javascript"></script>
+	
 </head>
-<body>
-  <div id="password-screen">
-    <h2>请输入密码进入聊天室</h2>
-    <button id="enter-chat">进入</button>
-  </div>
+<body class="home page-template page-template-pn-homepage page-template-pn-homepage-php page page-id-4">
+<div id="container">
 
-  <div id="chat-container">
-    <h1>在线聊天室</h1>
+	
+		
+	
+	<div class="header_wrap">
+		<div class="header">
+			<div class="logoblock">
+				<div class="logoblock_ins">
+											<a href="https://ichange.one/zh/">
+												
+													<img src="https://ichange.one/wp-content/uploads/Logo-CH-05.png" alt="" />
+													
+						
+						</a>
+						
+				</div>
+			</div>
 
-    <div id="chatbox" style="height: 300px; overflow-y: auto;"></div>
+			
+							
+						
+			
+						
 
-    <input type="text" id="username" placeholder="用户名">
-    <input type="text" id="message" placeholder="请输入消息">
-    <button id="send_message">发送</button>
-  </div>
-</body>
+							<a href="https://ichange.one/zh/register/" class="toplink toplink_signup js_window_join">注册</a>
+				<a href="https://ichange.one/zh/login/" class="toplink toplink_signin js_window_login">登录</a>
+						
+			<div class="tolbar_lang">
+		<div class="langlist_div">
+			<div class="langlist_title"><span>zh</span></div>
+			<div class="langlist_ul">
+		
+				<a href="https://ichange.one/premium_site_action-set_site_lang.html?meth=get&yid=231d6dea8509&ynd=0&lang=zh&return_url=https%3A%2F%2Fichange.one%2Fzh%2F" rel="nofollow" class="langlist_li ">
+					<div class="langlist_liimg">
+						<img src="https://ichange.one/wp-content/plugins/premiumbox/flags/zh_CN.png" alt="" />
+					</div>
+					简体中文
+				</a>
+				<a href="https://ichange.one/premium_site_action-set_site_lang.html?meth=get&yid=231d6dea8509&ynd=0&lang=zh&return_url=https%3A%2F%2Fichange.one%2Fru%2F" rel="nofollow" class="langlist_li ">
+					<div class="langlist_liimg">
+						<img src="https://ichange.one/wp-content/plugins/premiumbox/flags/ru_RU.png" alt="" />
+					</div>
+					Русский
+				</a>
+				<a href="https://ichange.one/premium_site_action-set_site_lang.html?meth=get&yid=231d6dea8509&ynd=0&lang=zh&return_url=https%3A%2F%2Fichange.one%2F" rel="nofollow" class="langlist_li ">
+					<div class="langlist_liimg">
+						<img src="https://ichange.one/wp-content/plugins/premiumbox/flags/en_US.png" alt="" />
+					</div>
+					English
+				</a>
+			</div>
+		</div></div>			
+				<div class="clear"></div>
+		</div>
+	</div>
+	
+	<!-- top menu -->
+	<div class="tophead_wrap">
+		<div class="tophead_ins">
+			<div class="tophead">
+				<div class="topmenu">
+					<ul id="menu-verhnee-menyu-top-menu" class="tmenu js_menu"><li id="menu-item-30" class="cl4 menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item  first_menu_li menu-item-30"><a href="https://ichange.one/zh/" aria-current="page"><span>主页</span></a></li>
+<li id="menu-item-34" class="cl1 menu-item menu-item-type-post_type menu-item-object-page menu-item-34"><a href="https://ichange.one/zh/tarifs/"><span>汇率</span></a></li>
+<li id="menu-item-486" class="cl5 menu-item menu-item-type-post_type menu-item-object-page menu-item-486"><a href="https://ichange.one/zh/discount/"><span>会员折扣</span></a></li>
+<li id="menu-item-901" class="cl3 menu-item menu-item-type-post_type menu-item-object-page menu-item-901"><a href="https://ichange.one/zh/aml/"><span>AML/KYC</span></a></li>
+<li id="menu-item-33" class="cl2 menu-item menu-item-type-post_type menu-item-object-page menu-item-33"><a href="https://ichange.one/zh/reviews/"><span>评价</span></a></li>
+<li id="menu-item-31" class="cl6 menu-item menu-item-type-post_type menu-item-object-page  last_menu_li menu-item-31"><a href="https://ichange.one/zh/feedback/"><span>联系我们</span></a></li>
+</ul>				
+					<div class="clear"></div>
+				</div>
+					<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!-- end top menu -->
+
+	<div class="wrapper">
+	
+			
+		<div class="contentwrap">
+						
+							
+			
+					
+						<div class="thecontent">
+							<div class="homepage_wrap">
+	
+	<div class="xchange_table_wrap">
+			
+	<div class="xchange_type_table tbl4">
+		<div class="xchange_type_table_ins">	
+				<div class="xtt_icon_wrap">
+					<div class="xtt_left_col_icon"><div class="xtt_left_col_icon_ins">
+						<div class="tbl_icon active js_icon_left js_icon_left_0" data-type="0"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>全部</div></div><div class="tbl_icon js_icon_left js_icon_left_USD" data-type="USD" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>USD</div></div><div class="tbl_icon js_icon_left js_icon_left_BTC" data-type="BTC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>BTC</div></div><div class="tbl_icon js_icon_left js_icon_left_BCH" data-type="BCH" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>BCH</div></div><div class="tbl_icon js_icon_left js_icon_left_DASH" data-type="DASH" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>DASH</div></div><div class="tbl_icon js_icon_left js_icon_left_ETH" data-type="ETH" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ETH</div></div><div class="tbl_icon js_icon_left js_icon_left_LTC" data-type="LTC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>LTC</div></div><div class="tbl_icon js_icon_left js_icon_left_XMR" data-type="XMR" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>XMR</div></div><div class="tbl_icon js_icon_left js_icon_left_XRP" data-type="XRP" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>XRP</div></div><div class="tbl_icon js_icon_left js_icon_left_ZEC" data-type="ZEC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ZEC</div></div><div class="tbl_icon js_icon_left js_icon_left_USDT" data-type="USDT" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>USDT</div></div><div class="tbl_icon js_icon_left js_icon_left_CNY" data-type="CNY" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>CNY</div></div><div class="tbl_icon js_icon_left js_icon_left_ETC" data-type="ETC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ETC</div></div><div class="tbl_icon js_icon_left js_icon_left_XLM" data-type="XLM" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>XLM</div></div><div class="tbl_icon js_icon_left js_icon_left_ITOKEN" data-type="ITOKEN" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ITOKEN</div></div><div class="tbl_icon js_icon_left js_icon_left_BNB" data-type="BNB" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>BNB</div></div><div class="tbl_icon js_icon_left js_icon_left_DOGE" data-type="DOGE" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>DOGE</div></div><div class="tbl_icon js_icon_left js_icon_left_TRX" data-type="TRX" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>TRX</div></div>
+						<div class="clear"></div>
+					</div></div>
+					<div class="xtt_right_col_icon"><div class="xtt_right_col_icon_ins">
+						<div class="tbl_icon active js_icon_right js_icon_right_0" data-type="0"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>全部</div></div><div class="tbl_icon js_icon_right js_icon_right_USD" data-type="USD" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>USD</div></div><div class="tbl_icon js_icon_right js_icon_right_BTC" data-type="BTC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>BTC</div></div><div class="tbl_icon js_icon_right js_icon_right_BCH" data-type="BCH" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>BCH</div></div><div class="tbl_icon js_icon_right js_icon_right_DASH" data-type="DASH" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>DASH</div></div><div class="tbl_icon js_icon_right js_icon_right_ETH" data-type="ETH" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ETH</div></div><div class="tbl_icon js_icon_right js_icon_right_LTC" data-type="LTC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>LTC</div></div><div class="tbl_icon js_icon_right js_icon_right_XMR" data-type="XMR" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>XMR</div></div><div class="tbl_icon js_icon_right js_icon_right_XRP" data-type="XRP" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>XRP</div></div><div class="tbl_icon js_icon_right js_icon_right_ZEC" data-type="ZEC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ZEC</div></div><div class="tbl_icon js_icon_right js_icon_right_USDT" data-type="USDT" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>USDT</div></div><div class="tbl_icon js_icon_right js_icon_right_CNY" data-type="CNY" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>CNY</div></div><div class="tbl_icon js_icon_right js_icon_right_ETC" data-type="ETC" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ETC</div></div><div class="tbl_icon js_icon_right js_icon_right_XLM" data-type="XLM" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>XLM</div></div><div class="tbl_icon js_icon_right js_icon_right_ITOKEN" data-type="ITOKEN" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>ITOKEN</div></div><div class="tbl_icon js_icon_right js_icon_right_BNB" data-type="BNB" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>BNB</div></div><div class="tbl_icon js_icon_right js_icon_right_DOGE" data-type="DOGE" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>DOGE</div></div><div class="tbl_icon js_icon_right js_icon_right_TRX" data-type="TRX" style="display: none;"><div class="tbl_icon_ins"><div class="tbl_icon_abs"></div>TRX</div></div>
+						<div class="clear"></div>
+					</div></div>
+						<div class="clear"></div>
+				</div>
+			<div class="xtt_table_wrap">
+		<div class="xtt_table_title_wrap">
+			<div class="xtt_left_col_title">
+				<div class="xtt_table_title1">
+					<span>你付款</span>
+				</div>
+			</div>
+			<div class="xtt_right_col_title">
+				<div class="xtt_table_title2">
+					<span>你收款</span>
+				</div>
+				<div class="xtt_table_title3">
+					<span>汇率</span>
+				</div>
+				<div class="xtt_table_title4">
+					<span>库存</span>
+				</div>			
+					<div class="clear"></div>
+			</div>
+				<div class="clear"></div>
+		</div>
+				<div class="xtt_table_body_wrap">
+					<div class="xtt_html_abs"></div>
+						<div class="xtt_left_col_table js_col_one"><div class="xtt_left_col_table_ins">
+			<!-- one item -->
+			<div class="js_item_left active js_item_left_CNY" data-id="55">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Alipay.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								支付宝 CNY
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_CNY" data-id="38">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Wechat.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								微信支付 CNY
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USD" data-id="1">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/PerfectMoney.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								Perfect Money USD
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_BTC" data-id="13">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Bitcoin.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								比特币 BTC
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USDT" data-id="35">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Tether.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								Tether ERC20 USDT
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USDT" data-id="72">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/Tether.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								Tether TRC20 USDT
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USDT" data-id="74">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/Tether.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								Tether BEP20 USDT
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USDT" data-id="70">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/whitebit.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								WhiteBIT Code USDT
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_ETH" data-id="16">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Ether.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								以太坊 ETH
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_LTC" data-id="17">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Litecoin.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								莱特币 LTC
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_ITOKEN" data-id="60">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/itokon.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								ITOKEN ITOKEN
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USD" data-id="11">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Payeer.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								Payeer USD
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_USD" data-id="10">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/AdvCash.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								Advcash USD
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_TRX" data-id="67">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/tron.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								波场 TRX
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_DOGE" data-id="66">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/Dogecoin.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								狗狗币 DOGE
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_XRP" data-id="19">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Ripple.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								瑞波币 XRP
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_DASH" data-id="15">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Dash.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								达世币 DASH
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_ZEC" data-id="21">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Zcash.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								大零币 ZEC
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+			<!-- one item -->
+			<div class="js_item_left js_item_left_XMR" data-id="18">
+				<div class="xtt_one_line_left"><div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+						<div class="xtt_one_line_ico_left"> 
+							<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Monero.png);"></div>
+						</div>
+						<div class="xtt_one_line_name_left">
+							<div class="xtt_one_line_name">
+								门罗币 XMR
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			<!-- end one item -->
+			
+						</div></div>
+						
+						<div class="xtt_right_col_table js_col_one"><div class="xtt_right_col_table_ins">
+							<div id="xtt_right_col_html">
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-PMUSD/" class="js_exchange_link js_item_right js_item_right_USD" data-direction-id="16">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/PerfectMoney.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							Perfect Money USD
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			765 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			5000
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="16" data-title="支付宝 CNY-Perfect Money USD">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-ADVCUSD/" class="js_exchange_link js_item_right js_item_right_USD" data-direction-id="36">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/AdvCash.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							Advcash USD
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			785 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			5000
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="36" data-title="支付宝 CNY-Advcash USD">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-PRUSD/" class="js_exchange_link js_item_right js_item_right_USD" data-direction-id="64">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Payeer.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							Payeer USD
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			765 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			5000
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="64" data-title="支付宝 CNY-Payeer USD">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-USDTERC/" class="js_exchange_link js_item_right js_item_right_USDT" data-direction-id="20">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Tether.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							Tether ERC20 USDT
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			775 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			10015
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="20" data-title="支付宝 CNY-Tether ERC20 USDT">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-USDTTRC/" class="js_exchange_link js_item_right js_item_right_USDT" data-direction-id="154">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/Tether.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							Tether TRC20 USDT
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			775 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			10001
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="154" data-title="支付宝 CNY-Tether TRC20 USDT">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-alpcny-to-usdtbep20/" class="js_exchange_link js_item_right js_item_right_USDT" data-direction-id="214">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/Tether.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							Tether BEP20 USDT
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			775 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			10001
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="214" data-title="支付宝 CNY-Tether BEP20 USDT">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-BTC/" class="js_exchange_link js_item_right js_item_right_BTC" data-direction-id="47">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Bitcoin.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							比特币 BTC
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			464292.87 &rarr; 1
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			8.055435
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="47" data-title="支付宝 CNY-比特币 BTC">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-TRX/" class="js_exchange_link js_item_right js_item_right_TRX" data-direction-id="130">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/tron.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							波场 TRX
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			110.36 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			50001
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="130" data-title="支付宝 CNY-波场 TRX">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-XRP/" class="js_exchange_link js_item_right js_item_right_XRP" data-direction-id="134">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Ripple.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							瑞波币 XRP
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			381.26 &rarr; 100
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			50000.25
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="134" data-title="支付宝 CNY-瑞波币 XRP">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-ETH/" class="js_exchange_link js_item_right js_item_right_ETH" data-direction-id="84">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Ether.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							以太坊 ETH
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			24969.93 &rarr; 1
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			100
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="84" data-title="支付宝 CNY-以太坊 ETH">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-to-LTC/" class="js_exchange_link js_item_right js_item_right_LTC" data-direction-id="85">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(/wp-content/uploads/Litecoin.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							莱特币 LTC
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			559.71 &rarr; 1
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			500.001
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="85" data-title="支付宝 CNY-莱特币 LTC">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			
+			<!-- one item -->
+			<a href="https://ichange.one/zh/exchange-ALPCNY-TO-ITOKEN/" class="js_exchange_link js_item_right js_item_right_ITOKEN" data-direction-id="57">
+				<div class="xtt_one_line_right">
+			<div class="xtt_one_line_abs"></div><div class="xtt_one_line_abs2"></div>
+					<div class="xtt_one_line_ico_right"> 
+						<div class="xtt_change_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/itokon.png);"></div>
+					</div>															
+					
+					<div class="xtt_one_line_name_right">
+						<div class="xtt_one_line_name">
+							ITOKEN ITOKEN
+						</div>
+					</div>														
+					
+	<div class="xtt_one_line_curs_right">
+		<div class="xtt_one_line_curs">
+			1 &rarr; 1
+		</div>	
+	</div>												
+	
+	<div class="xtt_one_line_reserv_right">
+		<div class="xtt_one_line_reserv">
+			100000
+		</div>	
+	</div>															
+	
+	<div class="xtt_one_line_rez js_reserve" data-id="57" data-title="支付宝 CNY-ITOKEN ITOKEN">
+		<div class="xtt_one_line_rez_ins">
+			<span>库存不足?</span>
+		</div>
+	</div>														
+	
+						<div class="clear"></div>
+				</div>	
+			</a>
+			<!-- end one item -->											
+			</div>
+							
+						</div></div>		
+						<div class="clear"></div>
+				</div>	
+				<div class="clear"></div>
+			</div>		
+		</div>
+	</div>	</div>
+
+		
+	
+		<div class="home_text_wrap">
+		<div class="home_text_ins">
+			<div class="home_text_abs"></div>
+			<div class="home_text_block">
+				<div class="home_text_title">欢迎使用爱兑网-电子货币自动兑换为您提供服务</div>
+				<div class="home_text_div">
+					<div class="text">
+						<p><strong>爱兑网-电子货币自动兑换</strong> &#8211; 让您的数字货币兑换更加便捷安全！</p>
+<p>我们提供目前主流的数字货币比特币BTC,以太坊ETH,莱特币LTC,完美货币Perfectmoney，Payeer,AdvCash等的双向自动兑换服务。</p>
+<p>注册会员可以根据兑换总金额享有 <strong>0.05%—0.5%</strong> 的兑换折扣。</p>
+<p>完成身份认证的会员享有额外 <strong>0.1%</strong> 的兑换折扣，<a target="_blank" href="https://ichange.one/zh/userverify/">马上认证</a></p>
+<p>推广我们网站享有我们利润 <strong>5%—50%</strong> 的推广佣金，<a target="_blank" href="https://ichange.one/zh/paccount/">查看推广链接</a></p>
+<p>详情请参考页面：<a target="_blank" href="https://ichange.one/zh/discount/">会员折扣</a></p>
+<p>ITOKEN  是什么？ITOKEN  是专门为那些需要经常兑换不同金额到不同账户，或者在我们不在线时需要兑换的客户推出的一种内部代币。用 ITOKEN  可以24小时随时购买所支持的电子货币，系统自动处理即时到账，使用 ITOKEN 购买还有一定优惠。更多详情请参考页面：<a href="https://ichange.one/zh/itoken/" target="_blank"> 使用 ITOKEN 前必读 </a></p>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>	
+			
+	
+			
+	
+</div>
+
+								</div>
+			<div class="sidebar">
+					
+<div class="not_frame">
+				<div class="login_widget">
+					<div class="login_widget_ins">
+					<form method="post" class="ajax_post_form" action="https://ichange.one/premium_site_action-loginform.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+					
+						<div class="login_widget_title">
+							<div class="login_widget_title_ins">
+								登录
+							</div>
+						</div>
+
+						<div class="resultgo"></div>
+
+						<div class="login_widget_body">
+							<div class="login_widget_body_ins">
+							
+								
+				<div class="form_field_line widget_log_line type_input field_name_logmail">
+					<div class="form_field_ins widget_log_line_ins">
+				
+					<input type="text" id="form_field_id-1-logmail"  placeholder="登陆名或邮箱" class="widget_log_input" autocomplete="off" name="logmail" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear widget_log_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line widget_log_line type_password field_name_pass">
+					<div class="form_field_ins widget_log_line_ins">
+				
+					<input type="password" id="form_field_id-1-pass"  placeholder="密码" class="widget_log_password" autocomplete="off" name="pass" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear widget_log_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line widget_log_line type_input field_name_user_pin hidden_line has_title"><div class="form_field_label widget_log_label"><label for="form_field_id-1-user_pin"><span class="form_field_label_ins">二次验证PIN:</span></label></div>
+					<div class="form_field_ins widget_log_line_ins">
+				
+					<input type="text" id="form_field_id-1-user_pin"  class="widget_log_input" autocomplete="off" name="user_pin" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear widget_log_line_clear"></div>
+				</div>
+				
+		<div class="captcha_div">
+			<div class="captcha_title">
+				输入你的答案
+			</div>
+			<div class="captcha_body">
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/uk1zKhz2.png" class="captcha1" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					<span class="captcha_sym">+</span>
+				</div>	
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/zGKWzntx.png" class="captcha2" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					=
+				</div>
+				<input type="text" class="captcha_divpole captcha_value" name="number" maxlength="4" autocomplete="off" value="" />
+				<a href="#" class="captcha_reload" title="刷新"></a>
+					<div class="clear"></div>
+			</div>
+		</div>		
+		
+								
+								<div class="widget_log_line_text">
+									<div class="login_widget_subm_left">
+										<a href="https://ichange.one/zh/register/">注册</a>
+									</div>
+									<div class="login_widget_subm_right">
+										<a href="https://ichange.one/zh/lostpass/">忘记密码？</a>
+									</div>
+									
+									<div class="clear"></div>
+								</div>	
+
+								<div class="widget_log_line_subm">
+									<input type="submit" formtarget="_top" name="submit" class="widget_log_submit" value="登陆" />
+								</div>							
+		 
+							</div>
+						</div>			
+
+					</form>
+					</div>
+				</div>
+				</div>
+			<div class="checkstatus_widget">
+				<div class="checkstatus_widget_ins">
+				<form method="post" class="ajax_post_form" action="https://ichange.one/premium_site_action-checkstatusform.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+				
+					<div class="checkstatus_widget_title">
+						<div class="checkstatus_widget_title_ins">
+							检查订单状态
+						</div>
+					</div>
+					
+					<div class="resultgo"></div>
+			
+					<div class="checkstatus_widget_body">
+						<div class="checkstatus_widget_body_ins">
+						
+							
+				<div class="form_field_line widget_checkstatus_line type_input field_name_exchange_id has_title"><div class="form_field_label widget_checkstatus_label"><label for="form_field_id-2-exchange_id"><span class="form_field_label_ins">订单 ID:</span></label></div>
+					<div class="form_field_ins widget_checkstatus_line_ins">
+				
+					<input type="text" id="form_field_id-2-exchange_id"  class="widget_checkstatus_input" autocomplete="off" name="exchange_id" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear widget_checkstatus_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line widget_checkstatus_line type_input field_name_email has_title"><div class="form_field_label widget_checkstatus_label"><label for="form_field_id-2-email"><span class="form_field_label_ins">你的 e-mail <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins widget_checkstatus_line_ins">
+				
+					<input type="text" id="form_field_id-2-email"  class="widget_checkstatus_input" autocomplete="off" name="email" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear widget_checkstatus_line_clear"></div>
+				</div>
+				
+							
+							<div class="widget_checkstatus_line_subm">
+								<input type="submit" formtarget="_top" name="submit" class="widget_checkstatus_submit" value="检查状态" />
+							</div>							
+	 
+						</div>
+					</div>			
+
+				</form>
+				</div>
+			</div>
+			
+			<input type="hidden" name="lc_count" class="lc_count" value="1" />
+			<input type="hidden" name="lc_logo" class="lc_logo" value="1" />
+			<div class="widget widget_lchange_div">
+				<div class="widget_ins">
+					<div class="widget_title">
+						<div class="widget_titlevn">
+							最近交易
+						</div>
+					</div>
+					<div class="widget_lchange_html">
+						<div class="widget_lchange_abs globalajax_ind"></div>
+						<div class="widget_lchange_ajax">
+					
+	<div class="widget_lchange_line lchangeid_109586">
+		<div class="widget_lchange_date">12.07.2024, 17:17</div>
+			<div class="clear"></div>
+								
+		<div class="widget_lchange_body">
+							
+			<div class="widget_lchange_why"> 
+				<div class="widget_lchange_ico currency_logo" style="background-image: url(/wp-content/uploads/Alipay.png);"></div>
+				<div class="widget_lchange_txt">
+					<div class="widget_lchange_sum">102</div>
+					<div class="widget_lchange_name">CNY</div>
+				</div>
+					<div class="clear"></div>
+			</div>
+							
+			<div class="widget_lchange_arr"></div>
+							
+			<div class="widget_lchange_why">
+				<div class="widget_lchange_ico currency_logo" style="background-image: url(https://ichange.one/wp-content/uploads/tron.png);"></div>
+				<div class="widget_lchange_txt">
+					<div class="widget_lchange_sum">92.01</div>
+					<div class="widget_lchange_name">TRX</div>
+				</div>
+			</div>
+			
+				<div class="clear"></div>
+		</div>
+	</div>	
+	
+						</div>
+					</div>				
+				</div>
+			</div>		
+			
+			<div class="widget_reserv_div">
+				<div class="widget_reserv_div_ins">
+					<div class="widget_reserv_div_title">
+						<div class="widget_reserv_div_title_ins">
+							当前库存
+						</div>
+					</div>
+					
+					<div class="widget_reserv_filters"><div class="widget_reserv_filter current" data-id="0"><span>全部</span></div><div class="widget_reserv_filter" data-id="USD"><span>USD</span></div>
+				<div class="clear"></div>
+			</div>
+					
+					<div class="widget_reserv_vt widget_reserv_vt_0 widget_reserv_vt_USD">
+				<div class="widget_reserv_line odd">  
+					<div class="widget_reserv_ico currency_logo" style="background-image: url(/wp-content/uploads/PerfectMoney.png);" data-logo="/wp-content/uploads/PerfectMoney.png" data-logo-next=""></div>
+					<div class="widget_reserv_block">
+						<div class="widget_reserv_title">
+							Perfect Money USD
+						</div>
+						<div class="widget_reserv_sum">
+							5420.39
+						</div>
+					</div>
+						<div class="clear"></div>
+				</div>		
+				</div><div class="widget_reserv_vt widget_reserv_vt_0 widget_reserv_vt_USD">
+				<div class="widget_reserv_line even">  
+					<div class="widget_reserv_ico currency_logo" style="background-image: url(/wp-content/uploads/Payeer.png);" data-logo="/wp-content/uploads/Payeer.png" data-logo-next=""></div>
+					<div class="widget_reserv_block">
+						<div class="widget_reserv_title">
+							Payeer USD
+						</div>
+						<div class="widget_reserv_sum">
+							3689.6
+						</div>
+					</div>
+						<div class="clear"></div>
+				</div>		
+				</div><div class="widget_reserv_vt widget_reserv_vt_0 widget_reserv_vt_USD">
+				<div class="widget_reserv_line odd">  
+					<div class="widget_reserv_ico currency_logo" style="background-image: url(/wp-content/uploads/AdvCash.png);" data-logo="/wp-content/uploads/AdvCash.png" data-logo-next=""></div>
+					<div class="widget_reserv_block">
+						<div class="widget_reserv_title">
+							Advcash USD
+						</div>
+						<div class="widget_reserv_sum">
+							5000
+						</div>
+					</div>
+						<div class="clear"></div>
+				</div>		
+				</div>
+				</div>
+			</div>
+					</div>
+							<div class="clear"></div>
+		</div>	
+			
+	</div>
+
+	<!-- partners -->
+		
+	<div class="footer_partner_wrap">
+		<div class="footer_partner_wrap_ins">
+			<div class="footer_partner_block">
+				<div class="footer_partner_title">合作伙伴</div>
+
+										<div class="footer_partner_one">
+							<a href="https://bestchange.com/ichangeone-exchanger.html" target="_blank">								<img src="https://ichange.one/wp-content/uploads/bestchange.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+															<img src="https://ichange.one/wp-content/uploads/btc.png" alt="" />
+													</div>
+											<div class="footer_partner_one">
+							<a href="https://perfectmoney.com/" target="_blank">								<img src="https://ichange.one/wp-content/uploads/perfectmoney-1.png" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://advcash.com/" target="_blank">								<img src="https://ichange.one/wp-content/uploads/adv.png" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://payeer.com/" target="_blank">								<img src="https://ichange.one/wp-content/uploads/payeer-1.png" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://www.okchanger.com/exchangers/IChange-One" target="_blank">								<img src="/wp-content/uploads/okchanger.png" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://bestexchangers.ru/en/detail.html?xobmen=816" target="_blank">								<img src="/wp-content/uploads/bestexchangers.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://pro-obmen.ru/ichange.one" target="_blank">								<img src="/wp-content/uploads/proobmen.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://glazok.org/exchange/?details=881" target="_blank">								<img src="/wp-content/uploads/glazok.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://xrates.ru/testimonials/otzyvy-ichangeone" target="_blank">								<img src="https://ichange.one/wp-content/uploads/xrates.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://kurs.expert/by/obmennik/ichange-one/feedbacks.html" target="_blank">								<img src="/wp-content/uploads/kursexpert.png" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://exchangersmonitor.com/exchanger-ichange.one.html" target="_blank">								<img src="https://ichange.one/wp-content/uploads/exmon.jpg" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://en.kurses.com.ua/exchangers/ichange.one" target="_blank">								<img src="/wp-content/uploads/kurses.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://bitcoinmarket.global/exchanger.php?id=488%22" target="_blank">								<img src="https://ichange.one/wp-content/uploads/BM88X31.gif" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://topgoldforum.com/topic/355787-ichangeone-ichangeone/" target="_blank">								<img src="https://ichange.one/wp-content/uploads/tgf.jpg" alt="" />
+							</a>						</div>
+											<div class="footer_partner_one">
+							<a href="https://bestemoneys.com/ec-exchange_ichange-one.html" target="_blank">								<img src="https://ichange.one/wp-content/uploads/bestmoneys.gif" alt="" />
+							</a>						</div>
+					
+				<div class="clear"></div>
+			</div>	
+		</div>
+	</div>
+		
+	<!-- end partners -->
+
+	<!-- footer --> 
+	<div class="footer_wrap">
+		<div class="footer">
+		
+			<div class="footer_left">
+				<div class="copyright">
+											<p>爱兑网 – 电子货币自动兑换服务</p>
+									</div>
+				
+				<div class="footer_menu">
+					<ul id="menu-nizhnee-menyu-footer-menu" class="fmenu"><li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page  first_menu_li menu-item-36"><a href="https://ichange.one/zh/notice/"><span>注意事项</span></a></li>
+<li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77"><a href="https://ichange.one/zh/tos/"><span>用户协议</span></a></li>
+<li id="menu-item-902" class="menu-item menu-item-type-post_type menu-item-object-page  last_menu_li menu-item-902"><a href="https://ichange.one/zh/news/"><span>网站新闻</span></a></li>
+</ul>						<div class="clear"></div>
+				</div>				
+			</div>
+			
+			<div class="footer_center">
+				<div class="footer_soc">
+						
+						<div class="clear"></div>
+				</div>	
+			</div>
+			
+			<div class="footer_right">
+			
+								<div class="footer_timetable">
+					<p>工作时间：<br />
+星期一 – 星期五 10:00 – 22:00 (GMT+8)<br />
+星期六 – 星期天 不定时在线</p>
+				</div>
+				
+									<a href="https://ichange.one/premium_site_action-set_site_vers.html?meth=get&yid=231d6dea8509&ynd=0&lang=zh&set=mobile&return_url=%2F" class="mobile_link"><span>手机版</span></a>
+						<div class="clear"></div>
+								
+			
+			</div>	
+			
+				<div class="clear"></div>
+		</div>
+	</div>
+	<!-- end footer -->
+
+</div>
+
+
+
+			<div class="loginform_box_html" style="display: none;">		
+				
+				<div class="form_field_line rb_line type_input field_name_logmail has_title"><div class="form_field_label rb_label"><label for="form_field_id-3-logmail"><span class="form_field_label_ins">登陆名或邮箱 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-3-logmail"  class="rb_input" autocomplete="off" name="logmail" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_password field_name_pass has_title"><div class="form_field_label rb_label"><label for="form_field_id-3-pass"><span class="form_field_label_ins">密码 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="password" id="form_field_id-3-pass"  class="rb_password" autocomplete="off" name="pass" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_input field_name_user_pin hidden_line has_title"><div class="form_field_label rb_label"><label for="form_field_id-3-user_pin"><span class="form_field_label_ins">二次验证PIN:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-3-user_pin"  class="rb_input" autocomplete="off" name="user_pin" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+		<div class="captcha_div">
+			<div class="captcha_title">
+				输入你的答案
+			</div>
+			<div class="captcha_body">
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/uk1zKhz2.png" class="captcha1" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					<span class="captcha_sym">+</span>
+				</div>	
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/zGKWzntx.png" class="captcha2" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					=
+				</div>
+				<input type="text" class="captcha_divpole captcha_value" name="number" maxlength="4" autocomplete="off" value="" />
+				<a href="#" class="captcha_reload" title="刷新"></a>
+					<div class="clear"></div>
+			</div>
+		</div>		
+			
+				<div class="rb_line"><input type="submit" formtarget="_top" name="submit" class="rb_submit" value="登陆" /></div>
+				<div class="rb_line"><a href="https://ichange.one/zh/register/" class="js_window_join">注册</a> | <a href="https://ichange.one/zh/lostpass/">忘记密码？</a></div>
+				<div class="resultgo"></div>
+			</div>
+			<form method="post" class="ajax_post_form" action="https://ichange.one/premium_site_action-loginform.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+				<input type="hidden" name="return_url" value="" />
+				<div class="loginform_box not_frame"></div>
+			</form>
+			
+			<div class="registerform_box_html" style="display: none;">		
+				
+				<div class="form_field_line rb_line type_input field_name_login has_title"><div class="form_field_label rb_label"><label for="form_field_id-4-login"><span class="form_field_label_ins">登录账号 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-4-login"  autocomplete="off" class="rb_input" name="login" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_input field_name_email has_title"><div class="form_field_label rb_label"><label for="form_field_id-4-email"><span class="form_field_label_ins">E-mail <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-4-email"  autocomplete="off" class="rb_input" name="email" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_password field_name_pass has_title"><div class="form_field_label rb_label"><label for="form_field_id-4-pass"><span class="form_field_label_ins">密码 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="password" id="form_field_id-4-pass"  autocomplete="off" class="rb_password" name="pass" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_password field_name_pass2 has_title"><div class="form_field_label rb_label"><label for="form_field_id-4-pass2"><span class="form_field_label_ins">再次输入密码 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="password" id="form_field_id-4-pass2"  autocomplete="off" class="rb_password" name="pass2" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+		<div class="captcha_div">
+			<div class="captcha_title">
+				输入你的答案
+			</div>
+			<div class="captcha_body">
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/uk1zKhz2.png" class="captcha1" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					<span class="captcha_sym">+</span>
+				</div>	
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/zGKWzntx.png" class="captcha2" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					=
+				</div>
+				<input type="text" class="captcha_divpole captcha_value" name="number" maxlength="4" autocomplete="off" value="" />
+				<a href="#" class="captcha_reload" title="刷新"></a>
+					<div class="clear"></div>
+			</div>
+		</div>		
+			
+				<div class="rb_line"><div class="reg_line"><label><input type="checkbox" name="check_rule" autocomplete="off" value="1" /> 我已读并同意 <a href="/en/tos/" target="_blank">用户协议</a></label></div></div>
+				<div class="rb_line"><input type="submit" formtarget="_top" name="submit" class="rb_submit" value="注册" /></div>
+				<div class="resultgo"></div>
+			</div>
+			<form method="post" class="ajax_post_form" action="https://ichange.one/premium_site_action-registerform.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+				<input type="hidden" name="return_url" value="" />
+				<div class="registerform_box"></div>
+			</form>
+				<div class="statuswork_div status_op1 toleft">
+	<div class="statuswork_div_ins">
+		<div class="statuswork">
+			<div class="statuswork_ins">
+				<div class="statuswork_title"><span>管理员在线</span></div>
+				<div class="statuswork_date"><span>12.07.2024, 17:17</span></div>
+			</div>	
+		</div>
+	</div>
+	</div>
+
+	<div class="userwalletsform_box_html" style="display: none;">		
+		
+				<div class="form_field_line rb_line type_select field_name_currency_id has_title"><div class="form_field_label rb_label"><label for="form_field_id-5-currency_id"><span class="form_field_label_ins">支付系统 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<select id="form_field_id-5-currency_id"  class="userwalletsform_currency_id rb_select" autocomplete="off" name="currency_id"><option value="0" >--选择货币--</option><option value="55" >支付宝 CNY</option><option value="65" >币安币 BEP2 BNB</option><option value="14" >比特币现金 BCH</option><option value="13" >比特币 BTC</option><option value="15" >达世币 DASH</option><option value="66" >狗狗币 DOGE</option><option value="50" >以太经典 ETC</option><option value="16" >以太坊 ETH</option><option value="17" >莱特币 LTC</option><option value="18" >门罗币 XMR</option><option value="19" >瑞波币 XRP</option><option value="74" >Tether BEP20 USDT</option><option value="35" >Tether ERC20 USDT</option><option value="72" >Tether TRC20 USDT</option><option value="67" >波场 TRX</option><option value="38" >微信支付 CNY</option><option value="21" >大零币 ZEC</option><option value="10" >Advcash USD</option><option value="11" >Payeer USD</option><option value="1" >Perfect Money USD</option><option value="59" >Stellar XLM</option><option value="34" >Tether Omni USDT</option><option value="43" >UnionPay CNY</option>		
+					</select>												
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_input field_name_account has_title"><div class="form_field_label rb_label"><label for="form_field_id-5-account"><span class="form_field_label_ins">账户号码 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-5-account"  class="userwalletsform_account rb_input" autocomplete="off" name="account" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+					
+		<div class="rb_line"><input type="submit" formtarget="_top" name="submit" class="rb_submit" value="添加账户 " /></div>
+		<div class="resultgo"></div>
+	</div>
+	<form method="post" class="ajax_post_form" action="https://ichange.one/premium_site_action-userwalletsform.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+		<input type="hidden" name="redir" id="userwalletsform_redir" value="" />
+			
+		<div class="userwalletsform_box"></div>
+	</form>
+	
+	<form method="post" class="verify_acc_form" enctype="multipart/form-data" action="https://ichange.one/premium_site_action-accountverify_upload.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+		<input type="hidden" name="redir" id="walletsverify_redir" value="0" />
+		<div class="walletsverify_box"></div>
+	</form>
+	
+	<div class="reserve_box_html" style="display: none;">		
+		
+				<div class="form_field_line rb_line type_input field_name_sum has_title"><div class="form_field_label rb_label"><label for="form_field_id-6-sum"><span class="form_field_label_ins">所需金额 <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-6-sum"  class="rb_input" autocomplete="off" name="sum" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_input field_name_email has_title"><div class="form_field_label rb_label"><label for="form_field_id-6-email"><span class="form_field_label_ins">E-mail <span class="req">*</span>:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<input type="text" id="form_field_id-6-email"  class="rb_input" autocomplete="off" name="email" value="" />						
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+				<div class="form_field_line rb_line type_text field_name_comment has_title"><div class="form_field_label rb_label"><label for="form_field_id-6-comment"><span class="form_field_label_ins">评论:</span></label></div>
+					<div class="form_field_ins rb_line_ins">
+				
+					<textarea id="form_field_id-6-comment"  class="rb_text" autocomplete="off" name="comment"></textarea>							
+					
+						
+						<div class="form_field_errors"><div class="form_field_errors_ins"></div></div>
+					</div>	
+					<div class="form_field_clear rb_line_clear"></div>
+				</div>
+				
+		<div class="captcha_div">
+			<div class="captcha_title">
+				输入你的答案
+			</div>
+			<div class="captcha_body">
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/uk1zKhz2.png" class="captcha1" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					<span class="captcha_sym">+</span>
+				</div>	
+				<div class="captcha_divimg">
+					<img src="https://ichange.one/wp-content/pn_uploads/captcha/zGKWzntx.png" class="captcha2" alt="" />
+				</div>
+				<div class="captcha_divznak">
+					=
+				</div>
+				<input type="text" class="captcha_divpole captcha_value" name="number" maxlength="4" autocomplete="off" value="" />
+				<a href="#" class="captcha_reload" title="刷新"></a>
+					<div class="clear"></div>
+			</div>
+		</div>		
+			
+		<div class="rb_line"><input type="submit" formtarget="_top" name="submit" class="rb_submit" value="发送请求" /></div>
+		<div class="resultgo"></div>
+	</div>
+	<form method="post" class="ajax_post_form" action="https://ichange.one/premium_site_action-reservform.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh">
+		<input type="hidden" name="id" id="reserve_box_id" value="0" />
+			
+		<div class="reserve_box"></div>
+	</form>
+	<script type="931fa7366553a025676f639d-text/javascript">
+jQuery(function($){		
+	var auto_load = 1;
+	
+	function globalajax_timer(){
+		if(auto_load == 1){
+			auto_load = 0;
+			
+			var param = 'set=1'+ '&lchange=1' + '&lc_count=' + $('.lc_count').val() + '&lc_logo=' + $('.lc_logo').val();
+					
+			$('.globalajax_ind').addClass('active');
+			$.ajax({
+				type: "POST",
+				url: "https://ichange.one/premium_site_action-globalajax_action.html?meth=post&yid=231d6dea8509&ynd=0&lang=zh",
+				dataType: 'json',
+				data: param,
+				error: function(res, res2, res3){
+							for (key in res) {
+			console.log(key + ' = ' + res[key]);
+		}
+					},
+				beforeSend: function(res, res2, res3){
+									},			
+				success: function(res)
+				{		
+								
+					if(res['status'] == 'success'){
+						auto_load = 1;						
+							if(res['lb_res']){
+		$('.widget_lchange_ajax').html(res['lb_html']);
+	}
+					}	
+					$('.globalajax_ind').removeClass('active');
+				}
+			});
+		}
+	}	
+	
+	setInterval(globalajax_timer, 60000);
+		
+});	
+</script>		
+		
+<!-- Put online chat code or another code here / Razmestite kod onlajn chata ili drugoi kod vmesto jetogo teksta !-->
+
+
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="931fa7366553a025676f639d-|49" defer></script></body>
 </html>
